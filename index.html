@@ -3,481 +3,326 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Analýza slovných sietí – Diplomový projekt</title>
+  <title>Diplomový projekt – Filip Valíček</title>
   <style>
-    :root {
-      --navy:   #1a233a;
-      --blue:   #267abf;
-      --blue2:  #1a5c99;
-      --light:  #f0f4fa;
-      --white:  #ffffff;
-      --gray:   #6b7280;
-      --green:  #16a34a;
-      --orange: #d97706;
-      --red:    #dc2626;
-      --border: #e2e8f0;
-      --card:   #ffffff;
-    }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--light);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f8f9fb;
       color: #1e293b;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
-    /* ── HEADER ── */
+    /* HEADER */
     header {
-      background: var(--navy);
+      background: #1a233a;
       color: white;
-      padding: 0;
-    }
-    .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 48px 24px 40px;
-    }
-    .header-tag {
-      display: inline-block;
-      background: var(--blue);
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 999px;
-      margin-bottom: 20px;
+      padding: 52px 24px 44px;
+      text-align: center;
     }
     header h1 {
-      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
       font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
+      line-height: 1.3;
     }
-    header h1 span { color: var(--blue); }
+    header h1 span { color: #60a5fa; }
     .header-sub {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       color: #94a3b8;
-      max-width: 680px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
     .header-meta {
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
-      gap: 24px;
-      font-size: 0.9rem;
-      color: #cbd5e1;
-      border-top: 1px solid #2d3a55;
-      padding-top: 24px;
+      gap: 10px;
+      font-size: 0.85rem;
     }
-    .header-meta span strong { color: white; }
+    .meta-pill {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 5px 14px;
+      color: #cbd5e1;
+    }
+    .meta-pill strong { color: white; }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      background: var(--blue2);
+      background: #243049;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      gap: 0;
-      overflow-x: auto;
     }
     nav a {
-      color: #bfdbfe;
+      color: #93c5fd;
       text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 500;
-      padding: 14px 20px;
-      white-space: nowrap;
+      font-size: 0.87rem;
+      padding: 12px 18px;
       transition: background 0.15s, color 0.15s;
-      border-bottom: 3px solid transparent;
     }
-    nav a:hover { background: rgba(255,255,255,0.08); color: white; border-bottom-color: white; }
+    nav a:hover { background: rgba(255,255,255,0.07); color: white; }
 
-    /* ── MAIN ── */
+    /* MAIN */
     main {
-      max-width: 1100px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 48px 24px 80px;
     }
 
-    section { margin-bottom: 64px; }
+    section { margin-bottom: 56px; }
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 24px;
-      padding-bottom: 10px;
-      border-bottom: 3px solid var(--blue);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    h2 .icon { font-size: 1.2rem; }
-
-    /* ── CARDS ── */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px 28px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
-
-    /* ── DESCRIPTION ── */
-    .desc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    @media (max-width: 680px) { .desc-grid { grid-template-columns: 1fr; } }
-
-    .desc-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 22px 24px;
-    }
-    .desc-card h3 {
-      font-size: 0.8rem;
-      font-weight: 700;
+      color: #1a233a;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #3b82f6;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--blue);
-      margin-bottom: 10px;
+      letter-spacing: 0.04em;
     }
-    .desc-card p { font-size: 0.95rem; color: #374151; }
 
-    /* ── GOALS ── */
-    .goals-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 16px;
+    /* CARDS */
+    .card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 24px 28px;
     }
-    .goal-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--blue);
+
+    /* ANOTACIA */
+    .annotation {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #3b82f6;
       border-radius: 0 10px 10px 0;
-      padding: 16px 18px;
-      font-size: 0.93rem;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
+      padding: 20px 24px;
+      font-size: 0.95rem;
+      color: #374151;
     }
-    .goal-item .num {
-      background: var(--blue);
+
+    /* CIEL */
+    .goal-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-size: 0.95rem;
+      color: #1e40af;
+    }
+
+    /* GOALS LIST */
+    .goals { display: flex; flex-direction: column; gap: 10px; }
+    .goal-item {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 0.92rem;
+    }
+    .goal-num {
+      background: #3b82f6;
       color: white;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      width: 22px;
+      min-width: 22px;
       height: 22px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
-    /* ── TIMELINE ── */
-    .timeline { position: relative; }
+    /* TIMELINE */
+    .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
     .timeline::before {
       content: '';
       position: absolute;
-      left: 18px;
-      top: 0; bottom: 0;
+      left: 10px; top: 8px; bottom: 8px;
       width: 2px;
-      background: var(--border);
+      background: #e2e8f0;
     }
-    .tl-item {
-      position: relative;
-      padding-left: 52px;
-      margin-bottom: 28px;
-    }
+    .tl-item { padding-left: 40px; padding-bottom: 24px; position: relative; }
+    .tl-item:last-child { padding-bottom: 0; }
     .tl-dot {
       position: absolute;
-      left: 10px;
-      top: 14px;
-      width: 18px;
-      height: 18px;
+      left: 4px; top: 6px;
+      width: 14px; height: 14px;
       border-radius: 50%;
-      border: 3px solid white;
-      box-shadow: 0 0 0 2px currentColor;
+      border: 2px solid white;
     }
-    .tl-dot.done    { background: var(--green);  color: var(--green); }
-    .tl-dot.active  { background: var(--orange); color: var(--orange); }
-    .tl-dot.planned { background: #94a3b8;       color: #94a3b8; }
+    .done    { background: #22c55e; box-shadow: 0 0 0 2px #22c55e; }
+    .active  { background: #f59e0b; box-shadow: 0 0 0 2px #f59e0b; }
+    .planned { background: #cbd5e1; box-shadow: 0 0 0 2px #cbd5e1; }
 
     .tl-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px 20px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 14px 18px;
     }
-    .tl-header {
+    .tl-head {
       display: flex;
       align-items: center;
       gap: 10px;
       margin-bottom: 8px;
       flex-wrap: wrap;
     }
-    .tl-title {
-      font-weight: 700;
-      font-size: 0.97rem;
-      color: var(--navy);
-    }
-    .tl-badge {
-      font-size: 0.72rem;
+    .tl-title { font-weight: 600; font-size: 0.93rem; }
+    .tl-date  { font-size: 0.78rem; color: #94a3b8; margin-left: auto; }
+    .badge {
+      font-size: 0.7rem;
       font-weight: 600;
-      padding: 2px 10px;
+      padding: 2px 9px;
       border-radius: 999px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
-    .badge-done    { background: #dcfce7; color: #15803d; }
-    .badge-active  { background: #fef3c7; color: #92400e; }
-    .badge-planned { background: #f1f5f9; color: #475569; }
+    .b-done    { background: #dcfce7; color: #15803d; }
+    .b-active  { background: #fef3c7; color: #92400e; }
+    .b-planned { background: #f1f5f9; color: #64748b; }
 
-    .tl-tasks {
-      list-style: none;
-      font-size: 0.88rem;
-      color: #4b5563;
-    }
-    .tl-tasks li {
-      padding: 3px 0;
-      padding-left: 16px;
-      position: relative;
-    }
-    .tl-tasks li::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: var(--blue);
-    }
+    .tl-tasks { list-style: none; font-size: 0.85rem; color: #4b5563; }
+    .tl-tasks li { padding: 2px 0 2px 14px; position: relative; }
+    .tl-tasks li::before { content: '–'; position: absolute; left: 0; color: #94a3b8; }
 
-    /* ── DOWNLOADS ── */
-    .downloads-grid {
+    /* STATS */
+    .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
     }
+    .stat {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .stat-val { font-size: 1.4rem; font-weight: 800; color: #1a233a; }
+    .stat-lbl { font-size: 0.76rem; color: #94a3b8; margin-top: 3px; }
+    .stat-note { font-size: 0.75rem; color: #22c55e; font-weight: 600; margin-top: 6px; }
+
+    /* DOWNLOADS */
     .dl-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 22px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 18px 22px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       text-decoration: none;
       color: inherit;
-      transition: box-shadow 0.15s, transform 0.15s;
+      transition: box-shadow 0.15s;
+      margin-bottom: 10px;
     }
-    .dl-card:hover { box-shadow: 0 4px 16px rgba(38,122,191,0.15); transform: translateY(-2px); }
-    .dl-icon {
-      font-size: 2rem;
-      flex-shrink: 0;
-    }
-    .dl-info strong { display: block; font-size: 0.95rem; color: var(--navy); margin-bottom: 2px; }
-    .dl-info span   { font-size: 0.82rem; color: var(--gray); }
-    .dl-arrow { margin-left: auto; color: var(--blue); font-size: 1.2rem; }
+    .dl-card:hover { box-shadow: 0 4px 16px rgba(59,130,246,0.12); }
+    .dl-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .dl-info strong { display: block; font-size: 0.93rem; color: #1a233a; }
+    .dl-info span   { font-size: 0.8rem; color: #94a3b8; }
+    .dl-arrow { margin-left: auto; color: #3b82f6; }
 
-    /* ── TECH STACK ── */
-    .tech-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .tech-pill {
-      background: var(--navy);
-      color: #bfdbfe;
-      font-size: 0.82rem;
-      font-weight: 500;
-      padding: 6px 14px;
-      border-radius: 999px;
+    /* TECH */
+    .tech-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 0.83rem;
+      color: #475569;
     }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
-      background: var(--navy);
-      color: #94a3b8;
+      background: #1a233a;
+      color: #64748b;
       text-align: center;
-      padding: 28px 24px;
-      font-size: 0.85rem;
+      padding: 24px;
+      font-size: 0.83rem;
     }
-    footer a { color: var(--blue); text-decoration: none; }
-
-    /* ── VERSION BADGE ── */
-    .version-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-    .vbadge {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 16px;
-      font-size: 0.85rem;
-    }
-    .vbadge .vname { color: var(--gray); font-size: 0.75rem; display: block; margin-bottom: 2px; }
-    .vbadge .vval  { font-weight: 700; color: var(--navy); }
+    footer a { color: #60a5fa; text-decoration: none; }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════ HEADER -->
 <header>
-  <div class="header-inner">
-    <div class="header-tag">Diplomový projekt · FMFI UK · 2025/2026</div>
-    <h1>Analýza <span>slovných sietí</span><br>v literárnych textoch</h1>
-    <p class="header-sub">
-      Kvantitatívna analýza prirodzeného jazyka prostredníctvom teórie grafov.
-      Replikácia a rozšírenie metodológie Kulig et al. (2017) s dôrazom
-      na úlohu interpunkcie a viacjazyčné porovnanie.
-    </p>
-    <div class="header-meta">
-      <span><strong>Autor:</strong> Bc. Ján Filo</span>
-      <span><strong>Vedúca:</strong> doc. RNDr. Mária Markošová, PhD.</span>
-      <span><strong>Program:</strong> Mgr. Informatika, FMFI UK</span>
-      <span><strong>Akademický rok:</strong> 2025/2026</span>
-    </div>
+  <h1>Analýza distribúcií<br><span>interpunkčných znamienok</span> v literárnych textoch</h1>
+  <p class="header-sub">Diplomový projekt · FMFI UK Bratislava · 2025/2026</p>
+  <div class="header-meta">
+    <div class="meta-pill"><strong>Autor:</strong> Bc. Filip Valíček</div>
+    <div class="meta-pill"><strong>Vedúca:</strong> doc. RNDr. Mária Markošová, PhD.</div>
+    <div class="meta-pill"><strong>Program:</strong> Mgr. Informatika, FMFI UK</div>
+    <div class="meta-pill"><strong>Rok:</strong> 2025/2026</div>
   </div>
 </header>
 
-<!-- ═══════════════════════════════════════════════════════ NAV -->
 <nav>
-  <div class="nav-inner">
-    <a href="#popis">Popis</a>
-    <a href="#ciele">Ciele</a>
-    <a href="#kalendar">Kalendár etáp</a>
-    <a href="#vystupy">Výstupy</a>
-    <a href="#technologie">Technológie</a>
-  </div>
+  <a href="#anotacia">Anotácia</a>
+  <a href="#ciel">Cieľ</a>
+  <a href="#kalendar">Kalendár etáp</a>
+  <a href="#vysledky">Výsledky</a>
+  <a href="#vystupy">Výstupy</a>
 </nav>
 
-<!-- ═══════════════════════════════════════════════════════ MAIN -->
 <main>
 
-  <!-- VERZIE -->
-  <div class="version-row">
-    <div class="vbadge"><span class="vname">Verzia aplikácie</span><span class="vval">v1.3.0</span></div>
-    <div class="vbadge"><span class="vname">Posledná aktualizácia</span><span class="vval">Máj 2026</span></div>
-    <div class="vbadge"><span class="vname">Stav projektu</span><span class="vval">🟡 Prebieha</span></div>
-    <div class="vbadge"><span class="vname">Analyzované texty</span><span class="vval">8 diel · 4 jazyky</span></div>
-  </div>
-
-  <!-- ── POPIS ── -->
-  <section id="popis">
-    <h2><span class="icon">📖</span> Popis projektu</h2>
-    <div class="desc-grid">
-      <div class="desc-card">
-        <h3>Čo je slovná sieť?</h3>
-        <p>
-          Slovná susednostná sieť (Word Adjacency Network) je graf, v ktorom
-          každý uzol predstavuje unikátny token (slovo alebo interpunkčné
-          znamienko) a hrana spája tokeny, ktoré sa v texte vyskytujú vedľa seba.
-          Táto reprezentácia odhaľuje skrytú štrukturálnu organizáciu jazyka.
-        </p>
-      </div>
-      <div class="desc-card">
-        <h3>Čo skúmame?</h3>
-        <p>
-          Projekt sa zameriava na štatistické vlastnosti týchto sietí: distribúciu
-          stupňov <em>P(k)</em>, klasterizačný koeficient <em>C(k)</em>,
-          Zipf-Mandelbrotov zákon a ďalšie metriky. Kľúčová otázka:
-          ako interpunkcia ovplyvňuje štruktúru siete?
-        </p>
-      </div>
-      <div class="desc-card">
-        <h3>Referenčná práca</h3>
-        <p>
-          Projekt replikuje a rozširuje výsledky Kulig et al. (2017)
-          <em>„Modeling the Topology of Language Networks"</em>,
-          Information Sciences 375, 98–113. Hlavný výsledok: parameter
-          <em>c</em> v Zipf-Mandelbrotovom zákone je nižší, keď je
-          interpunkcia zahrnutá do analýzy.
-        </p>
-      </div>
-      <div class="desc-card">
-        <h3>Nástroj</h3>
-        <p>
-          Súčasťou práce je interaktívny GUI nástroj v Pythone (Tkinter +
-          Matplotlib), ktorý umožňuje stiahnutie textov z Project Gutenberg,
-          ich tokenizáciu, stavbu siete a vizualizáciu všetkých metrík.
-          Podporuje analýzu v jazykoch EN, DE, FR, IT, SK.
-        </p>
-      </div>
+  <!-- ANOTÁCIA -->
+  <section id="anotacia">
+    <h2>Anotácia</h2>
+    <div class="annotation">
+      Študent naprogramuje, alebo použije už naprogramovanú aplikáciu na hľadanie
+      distribúcie interpunkčných znamienok v textoch v rôznych jazykoch. Ak
+      študent použije hotovú aplikáciu, musí k nej doprogramovať všetko potrebné
+      na analýzu distribúcie a na tvorbu jej modelu. Študent zanalyzuje distribúcie
+      z textov toho istého autora v rôznych časových obdobiach, aby zistil, ako sa táto
+      vlastnosť textu mení a nakoľko ostáva stabilná. Navrhne matematický model
+      tejto distribúcie, prípadne nájde parametre známeho matematického modelu,
+      ktoré budú čo najlepšie vystihovať nameranú distribúciu. Porovná rôzne textové
+      žánre.
     </div>
   </section>
 
-  <!-- ── CIELE ── -->
-  <section id="ciele">
-    <h2><span class="icon">🎯</span> Ciele projektu</h2>
-    <div class="goals-list">
-      <div class="goal-item">
-        <div class="num">1</div>
-        <div>Replikovať výsledky Kulig et al. (2017) a overiť hlavné tvrdenie o parametri <em>c</em></div>
-      </div>
-      <div class="goal-item">
-        <div class="num">2</div>
-        <div>Implementovať interaktívny GUI nástroj na analýzu slovných sietí</div>
-      </div>
-      <div class="goal-item">
-        <div class="num">3</div>
-        <div>Analyzovať distribúciu stupňov <em>P(k)</em> a overiť škálovosť (mocninový zákon)</div>
-      </div>
-      <div class="goal-item">
-        <div class="num">4</div>
-        <div>Skúmať hierarchickú štruktúru cez klasterizačný koeficient <em>C(k) ~ k<sup>−δ</sup></em></div>
-      </div>
-      <div class="goal-item">
-        <div class="num">5</div>
-        <div>Porovnať sieťové vlastnosti naprieč jazykmi (EN, DE, FR, IT, SK)</div>
-      </div>
-      <div class="goal-item">
-        <div class="num">6</div>
-        <div>Porovnať empirické siete so syntetickými modelmi (BA, WS, PowerlawCluster)</div>
-      </div>
-      <div class="goal-item">
-        <div class="num">7</div>
-        <div>Analyzovať rastové krivky sietí (ASPL, C vs. veľkosť textu)</div>
-      </div>
-      <div class="goal-item">
-        <div class="num">8</div>
-        <div>Implementovať lemmatizáciu pre morfologicky bohaté jazyky (SK, PL)</div>
-      </div>
+  <!-- CIEĽ -->
+  <section id="ciel">
+    <h2>Cieľ práce</h2>
+    <div class="goal-box">
+      Naprogramovať aplikáciu, alebo doprogramovať potrebné nástroje
+      do aplikácie na analýzu distribúcií interpunkčných znamienok v textoch
+      a vytvoriť matematický model opisujúci získané výsledky.
     </div>
   </section>
 
-  <!-- ── KALENDÁR ── -->
+  <!-- KALENDÁR -->
   <section id="kalendar">
-    <h2><span class="icon">📅</span> Kalendár etáp</h2>
+    <h2>Kalendár etáp</h2>
     <div class="timeline">
 
       <div class="tl-item">
         <div class="tl-dot done"></div>
         <div class="tl-card">
-          <div class="tl-header">
+          <div class="tl-head">
             <span class="tl-title">Etapa 1 – Štúdium a analýza literatúry</span>
-            <span class="tl-badge badge-done">✓ Dokončená</span>
-            <span style="font-size:0.8rem;color:#6b7280;margin-left:auto">Okt – Nov 2025</span>
+            <span class="badge b-done">✓ Dokončená</span>
+            <span class="tl-date">Okt – Nov 2025</span>
           </div>
           <ul class="tl-tasks">
             <li>Štúdium Kulig et al. (2017) a súvisiacich článkov</li>
-            <li>Prehľad teórie komplexných sietí (Newman 2010)</li>
-            <li>Štúdium Zipfovho zákona a jeho variácií</li>
+            <li>Prehľad teórie komplexných sietí a distribučných zákonov</li>
+            <li>Štúdium Zipfovho zákona a Zipf-Mandelbrotovho modelu</li>
           </ul>
         </div>
       </div>
@@ -485,16 +330,16 @@
       <div class="tl-item">
         <div class="tl-dot done"></div>
         <div class="tl-card">
-          <div class="tl-header">
+          <div class="tl-head">
             <span class="tl-title">Etapa 2 – Implementácia základnej pipeline</span>
-            <span class="tl-badge badge-done">✓ Dokončená</span>
-            <span style="font-size:0.8rem;color:#6b7280;margin-left:auto">Nov – Dec 2025</span>
+            <span class="badge b-done">✓ Dokončená</span>
+            <span class="tl-date">Nov – Dec 2025</span>
           </div>
           <ul class="tl-tasks">
-            <li>Modul na sťahovanie textov z Project Gutenberg</li>
-            <li>Tokenizácia a predspracovanie textu (6 módov interpunkcie)</li>
+            <li>Stiahnutie textov z Project Gutenberg</li>
+            <li>Tokenizácia a predspracovanie (6 módov interpunkcie)</li>
             <li>Stavba slovnej susednostnej siete (NetworkX)</li>
-            <li>CLI rozhranie (main.py): download / analyse / compare</li>
+            <li>CLI rozhranie: download / analyse / compare</li>
           </ul>
         </div>
       </div>
@@ -502,16 +347,16 @@
       <div class="tl-item">
         <div class="tl-dot done"></div>
         <div class="tl-card">
-          <div class="tl-header">
-            <span class="tl-title">Etapa 3 – Analytické metriky</span>
-            <span class="tl-badge badge-done">✓ Dokončená</span>
-            <span style="font-size:0.8rem;color:#6b7280;margin-left:auto">Jan 2026</span>
+          <div class="tl-head">
+            <span class="tl-title">Etapa 3 – Analytické metriky a modely</span>
+            <span class="badge b-done">✓ Dokončená</span>
+            <span class="tl-date">Jan 2026</span>
           </div>
           <ul class="tl-tasks">
-            <li>Distribúcia stupňov P(k): log-bin OLS, MLE+KS, dvojrežimový fit</li>
-            <li>Klasterizačný koeficient C(k): topologický, C(k) ~ k<sup>−δ</sup></li>
-            <li>Zipf-Mandelbrot fitovanie (scipy curve_fit, log-log)</li>
-            <li>ASPL, priemer, asortativita, LCC analýza</li>
+            <li>Distribúcia stupňov P(k): log-bin OLS, MLE + KS, dvojrežimový fit</li>
+            <li>Klasterizačný koeficient C(k) ~ k<sup>−δ</sup></li>
+            <li>Zipf-Mandelbrot fitovanie</li>
+            <li>ASPL, priemer, asortativita</li>
           </ul>
         </div>
       </div>
@@ -519,16 +364,15 @@
       <div class="tl-item">
         <div class="tl-dot done"></div>
         <div class="tl-card">
-          <div class="tl-header">
-            <span class="tl-title">Etapa 4 – GUI nástroj</span>
-            <span class="tl-badge badge-done">✓ Dokončená</span>
-            <span style="font-size:0.8rem;color:#6b7280;margin-left:auto">Feb – Mar 2026</span>
+          <div class="tl-head">
+            <span class="tl-title">Etapa 4 – Interaktívny GUI nástroj</span>
+            <span class="badge b-done">✓ Dokončená</span>
+            <span class="tl-date">Feb – Mar 2026</span>
           </div>
           <ul class="tl-tasks">
-            <li>Interaktívna desktopová aplikácia (Tkinter + Matplotlib TkAgg)</li>
+            <li>Desktopová aplikácia (Tkinter + Matplotlib)</li>
             <li>Záložky: Summary, P(k), Zipf, C(k), Compare variants, Models</li>
-            <li>Export grafu do CSV (Source, Target, Weight)</li>
-            <li>Riešenie import deadlocku (preload thread pre scipy)</li>
+            <li>Export grafu do CSV</li>
           </ul>
         </div>
       </div>
@@ -536,16 +380,16 @@
       <div class="tl-item">
         <div class="tl-dot done"></div>
         <div class="tl-card">
-          <div class="tl-header">
+          <div class="tl-head">
             <span class="tl-title">Etapa 5 – Viacjazyčná analýza a porovnanie</span>
-            <span class="tl-badge badge-done">✓ Dokončená</span>
-            <span style="font-size:0.8rem;color:#6b7280;margin-left:auto">Mar – Apr 2026</span>
+            <span class="badge b-done">✓ Dokončená</span>
+            <span class="tl-date">Mar – Apr 2026</span>
           </div>
           <ul class="tl-tasks">
-            <li>Analýza 8 literárnych diel (EN, DE, FR)</li>
-            <li>Paralelné porovnanie Alice in Wonderland v EN / DE / FR</li>
-            <li>Porovnanie syntetických modelov sietí (ER, BA, WS, PowerlawCluster)</li>
-            <li>Prezentácia výsledkov na Projektovom seminári 1 (Máj 2026)</li>
+            <li>Analýza literárnych diel v EN, DE, FR</li>
+            <li>Paralelné porovnanie Alice in Wonderland (EN / DE / FR)</li>
+            <li>Porovnanie so syntetickými modelmi sietí (BA, WS, PowerlawCluster)</li>
+            <li>Prezentácia výsledkov – Projektový seminár 1 (Máj 2026)</li>
           </ul>
         </div>
       </div>
@@ -553,15 +397,15 @@
       <div class="tl-item">
         <div class="tl-dot active"></div>
         <div class="tl-card">
-          <div class="tl-header">
-            <span class="tl-title">Etapa 6 – Rozšírenie analýzy a rastové krivky</span>
-            <span class="tl-badge badge-active">⏳ Prebieha</span>
-            <span style="font-size:0.8rem;color:#6b7280;margin-left:auto">Máj – Jún 2026</span>
+          <div class="tl-head">
+            <span class="tl-title">Etapa 6 – Rastové krivky a robustnosť siete</span>
+            <span class="badge b-active">⏳ Prebieha</span>
+            <span class="tl-date">Máj – Jún 2026</span>
           </div>
           <ul class="tl-tasks">
-            <li>Rastové krivky: ASPL a C vs. veľkosť textu (Fig. 6 z Kulig et al.)</li>
+            <li>Rastové krivky: ASPL a C vs. veľkosť textu</li>
             <li>Experiment odstránenia uzlov – robustnosť siete</li>
-            <li>Analýza IT, PL textov</li>
+            <li>Rozšírenie na IT a PL texty</li>
           </ul>
         </div>
       </div>
@@ -569,15 +413,14 @@
       <div class="tl-item">
         <div class="tl-dot planned"></div>
         <div class="tl-card">
-          <div class="tl-header">
-            <span class="tl-title">Etapa 7 – Lemmatizácia a morfologicky bohaté jazyky</span>
-            <span class="tl-badge badge-planned">Plánovaná</span>
-            <span style="font-size:0.8rem;color:#6b7280;margin-left:auto">Júl – Aug 2026</span>
+          <div class="tl-head">
+            <span class="tl-title">Etapa 7 – Lemmatizácia a ďalšie jazyky</span>
+            <span class="badge b-planned">Plánovaná</span>
+            <span class="tl-date">Júl – Aug 2026</span>
           </div>
           <ul class="tl-tasks">
-            <li>Integrácia lemmatizácie pre SK a PL</li>
+            <li>Lemmatizácia pre SK a PL (morfologicky bohaté jazyky)</li>
             <li>Porovnanie sietí pred a po lemmatizácii</li>
-            <li>Testovanie UDPipe pre pozičné slovné siete</li>
           </ul>
         </div>
       </div>
@@ -585,15 +428,14 @@
       <div class="tl-item">
         <div class="tl-dot planned"></div>
         <div class="tl-card">
-          <div class="tl-header">
-            <span class="tl-title">Etapa 8 – Dynamické modely a záverečná práca</span>
-            <span class="tl-badge badge-planned">Plánovaná</span>
-            <span style="font-size:0.8rem;color:#6b7280;margin-left:auto">Sep – Dec 2026</span>
+          <div class="tl-head">
+            <span class="tl-title">Etapa 8 – Záverečná práca</span>
+            <span class="badge b-planned">Plánovaná</span>
+            <span class="tl-date">Sep – Dec 2026</span>
           </div>
           <ul class="tl-tasks">
-            <li>Modely dynamického rastu (preferential attachment, Barabási-Albert)</li>
-            <li>Písanie diplomovej práce</li>
-            <li>Finalizácia aplikácie a dokumentácia</li>
+            <li>Dynamické modely rastu sietí</li>
+            <li>Písanie a finalizácia diplomovej práce</li>
           </ul>
         </div>
       </div>
@@ -601,101 +443,83 @@
     </div>
   </section>
 
-  <!-- ── VÝSTUPY ── -->
+  <!-- VÝSLEDKY -->
+  <section id="vysledky">
+    <h2>Ukážka výsledkov</h2>
+    <p style="font-size:0.85rem;color:#64748b;margin-bottom:14px">
+      Zločin a trest (Dostojevskij) · 208 782 slov · 9 678 uzlov
+    </p>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-val">γ ≈ 2.01</div>
+        <div class="stat-lbl">Exponent P(k)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">δ ≈ 0.52</div>
+        <div class="stat-lbl">Exponent C(k)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">0.619</div>
+        <div class="stat-lbl">Glob. klasterizácia</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">L ≈ 3.12</div>
+        <div class="stat-lbl">Priem. najkr. cesta</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">−0.088</div>
+        <div class="stat-lbl">Asortativita r</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">100 %</div>
+        <div class="stat-lbl">LCC podiel</div>
+      </div>
+    </div>
+    <p style="margin-top:14px;font-size:0.85rem;color:#16a34a;font-weight:600;">
+      ✓ Potvrdený hlavný výsledok Kulig et al.: parameter c v Zipf-Mandelbrot je nižší pri zahrnutí interpunkcie
+    </p>
+  </section>
+
+  <!-- VÝSTUPY -->
   <section id="vystupy">
-    <h2><span class="icon">📄</span> Výstupy a dokumenty</h2>
-    <div class="downloads-grid">
-      <a class="dl-card" href="/public/prezentacia_seminar1.pdf" target="_blank">
-        <div class="dl-icon">📊</div>
-        <div class="dl-info">
-          <strong>Prezentácia – Projektový seminár 1</strong>
-          <span>PDF · Máj 2026 · 14 slidov</span>
-        </div>
-        <div class="dl-arrow">↗</div>
-      </a>
-      <div class="dl-card" style="opacity:0.6;cursor:default">
-        <div class="dl-icon">📝</div>
-        <div class="dl-info">
-          <strong>Diplomová práca</strong>
-          <span>Dostupná po dokončení (2026/2027)</span>
-        </div>
+    <h2>Výstupy a dokumenty</h2>
+    <a class="dl-card" href="/public/prezentacia_seminar1.pdf" target="_blank">
+      <div class="dl-icon">📊</div>
+      <div class="dl-info">
+        <strong>Prezentácia – Projektový seminár 1</strong>
+        <span>PDF · Máj 2026 · 14 slidov</span>
       </div>
-      <div class="dl-card" style="opacity:0.6;cursor:default">
-        <div class="dl-icon">💻</div>
-        <div class="dl-info">
-          <strong>Zdrojový kód aplikácie</strong>
-          <span>GitHub – bude zverejnený</span>
-        </div>
+      <div class="dl-arrow">↗</div>
+    </a>
+    <div class="dl-card" style="opacity:0.5;cursor:default;">
+      <div class="dl-icon">📝</div>
+      <div class="dl-info">
+        <strong>Diplomová práca</strong>
+        <span>Dostupná po dokončení (2026/2027)</span>
       </div>
     </div>
-  </section>
 
-  <!-- ── KĽÚČOVÉ VÝSLEDKY ── -->
-  <section>
-    <h2><span class="icon">📈</span> Doterajšie výsledky (ukážka)</h2>
-    <div class="card">
-      <p style="margin-bottom:16px;color:#4b5563;font-size:0.93rem;">
-        Výsledky pre <strong>Zločin a trest</strong> (Dostojevskij) · 208 782 slov · 9 678 uzlov
-      </p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px">
-        <div style="text-align:center;padding:16px;background:#f8fafc;border-radius:8px;border:1px solid var(--border)">
-          <div style="font-size:1.6rem;font-weight:800;color:var(--blue)">γ ≈ 2.01</div>
-          <div style="font-size:0.8rem;color:var(--gray);margin-top:4px">Exponent P(k)</div>
-        </div>
-        <div style="text-align:center;padding:16px;background:#f8fafc;border-radius:8px;border:1px solid var(--border)">
-          <div style="font-size:1.6rem;font-weight:800;color:var(--blue)">δ ≈ 0.52</div>
-          <div style="font-size:0.8rem;color:var(--gray);margin-top:4px">Exponent C(k)</div>
-        </div>
-        <div style="text-align:center;padding:16px;background:#f8fafc;border-radius:8px;border:1px solid var(--border)">
-          <div style="font-size:1.6rem;font-weight:800;color:var(--green)">C = 0.619</div>
-          <div style="font-size:0.8rem;color:var(--gray);margin-top:4px">Globálna klasterizácia</div>
-        </div>
-        <div style="text-align:center;padding:16px;background:#f8fafc;border-radius:8px;border:1px solid var(--border)">
-          <div style="font-size:1.6rem;font-weight:800;color:var(--blue)">L ≈ 3.12</div>
-          <div style="font-size:0.8rem;color:var(--gray);margin-top:4px">Priem. najkr. cesta</div>
-        </div>
-        <div style="text-align:center;padding:16px;background:#f8fafc;border-radius:8px;border:1px solid var(--border)">
-          <div style="font-size:1.6rem;font-weight:800;color:var(--orange)">r = −0.088</div>
-          <div style="font-size:0.8rem;color:var(--gray);margin-top:4px">Asortativita</div>
-        </div>
-        <div style="text-align:center;padding:16px;background:#f8fafc;border-radius:8px;border:1px solid var(--border)">
-          <div style="font-size:1.6rem;font-weight:800;color:var(--green)">100 %</div>
-          <div style="font-size:0.8rem;color:var(--gray);margin-top:4px">LCC podiel</div>
-        </div>
-      </div>
-      <p style="margin-top:16px;font-size:0.85rem;color:var(--green);font-weight:600">
-        ✓ Potvrdený hlavný výsledok Kulig et al.: parameter c v Zipf-Mandelbrot je nižší pri zahrnutí interpunkcie
-      </p>
-    </div>
-  </section>
-
-  <!-- ── TECHNOLÓGIE ── -->
-  <section id="technologie">
-    <h2><span class="icon">🛠</span> Technológie</h2>
-    <div class="card">
-      <div class="tech-grid">
-        <span class="tech-pill">Python 3.11</span>
-        <span class="tech-pill">NetworkX</span>
-        <span class="tech-pill">Matplotlib</span>
-        <span class="tech-pill">NumPy</span>
-        <span class="tech-pill">SciPy</span>
-        <span class="tech-pill">Tkinter (GUI)</span>
-        <span class="tech-pill">Project Gutenberg API</span>
-        <span class="tech-pill">MLE (Hill estimator)</span>
-        <span class="tech-pill">Log-bin OLS</span>
-        <span class="tech-pill">Zipf-Mandelbrot fit</span>
-        <span class="tech-pill">Vercel (hosting)</span>
-      </div>
+    <h2 style="margin-top:40px;">Technológie</h2>
+    <div class="tech-wrap">
+      <span class="tech">Python 3.11</span>
+      <span class="tech">NetworkX</span>
+      <span class="tech">Matplotlib</span>
+      <span class="tech">NumPy</span>
+      <span class="tech">SciPy</span>
+      <span class="tech">Tkinter</span>
+      <span class="tech">Project Gutenberg</span>
+      <span class="tech">Log-bin OLS</span>
+      <span class="tech">MLE + KS</span>
+      <span class="tech">Zipf-Mandelbrot</span>
     </div>
   </section>
 
 </main>
 
-<!-- ═══════════════════════════════════════════════════════ FOOTER -->
 <footer>
-  <p>Bc. Ján Filo · Diplomová práca · FMFI UK Bratislava · 2025/2026</p>
-  <p style="margin-top:6px">
-    Vedúca práce: doc. RNDr. Mária Markošová, PhD. &nbsp;·&nbsp;
+  <p>Bc. Filip Valíček · Diplomová práca · FMFI UK Bratislava · 2025/2026</p>
+  <p style="margin-top:6px;">
+    Vedúca: doc. RNDr. Mária Markošová, PhD. &nbsp;·&nbsp;
     <a href="/public/prezentacia_seminar1.pdf" target="_blank">Prezentácia (PDF)</a>
   </p>
 </footer>
