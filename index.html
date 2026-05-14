@@ -329,15 +329,14 @@
         <div class="tl-dot done"></div>
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-title">Etapa 2 – Implementácia základnej pipeline</span>
+            <span class="tl-title">Etapa 2 – Predspracovanie textu a stavba siete</span>
             <span class="badge b-done">✓ Dokončená</span>
-            <span class="tl-date">Nov – Dec 2025</span>
+            <span class="tl-date">Nov 2025</span>
           </div>
           <ul class="tl-tasks">
             <li>Stiahnutie textov z Project Gutenberg</li>
-            <li>Tokenizácia a predspracovanie (6 módov interpunkcie)</li>
+            <li>Tokenizácia s podporou 6 módov interpunkcie</li>
             <li>Stavba slovnej susednostnej siete (NetworkX)</li>
-            <li>CLI rozhranie: download / analyse / compare</li>
           </ul>
         </div>
       </div>
@@ -346,15 +345,30 @@
         <div class="tl-dot done"></div>
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-title">Etapa 3 – Analytické metriky a modely</span>
+            <span class="tl-title">Etapa 3 – Distribúcia stupňov P(k)</span>
+            <span class="badge b-done">✓ Dokončená</span>
+            <span class="tl-date">Dec 2025</span>
+          </div>
+          <ul class="tl-tasks">
+            <li>Log-bin OLS fitovanie mocninového zákona</li>
+            <li>Automatická voľba k<sub>min</sub> metódou KS štatistiky (MLE)</li>
+            <li>Dvojrežimový fit: γ₁ pre jadro, γ₂ pre perifériu siete</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot done"></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <span class="tl-title">Etapa 4 – Zipf-Mandelbrot a ďalšie metriky</span>
             <span class="badge b-done">✓ Dokončená</span>
             <span class="tl-date">Jan 2026</span>
           </div>
           <ul class="tl-tasks">
-            <li>Distribúcia stupňov P(k): log-bin OLS, MLE + KS, dvojrežimový fit</li>
+            <li>Fitovanie Zipf-Mandelbrotovho modelu (log-log OLS)</li>
             <li>Klasterizačný koeficient C(k) ~ k<sup>−δ</sup></li>
-            <li>Zipf-Mandelbrot fitovanie</li>
-            <li>ASPL, priemer, asortativita</li>
+            <li>Priemerná najkratšia cesta, priemer siete, asortativita</li>
           </ul>
         </div>
       </div>
@@ -363,14 +377,14 @@
         <div class="tl-dot done"></div>
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-title">Etapa 4 – Interaktívny GUI nástroj</span>
+            <span class="tl-title">Etapa 5 – Interaktívny GUI nástroj</span>
             <span class="badge b-done">✓ Dokončená</span>
             <span class="tl-date">Feb – Mar 2026</span>
           </div>
           <ul class="tl-tasks">
             <li>Desktopová aplikácia (Tkinter + Matplotlib)</li>
             <li>Záložky: Summary, P(k), Zipf, C(k), Compare variants, Models</li>
-            <li>Export grafu do CSV</li>
+            <li>Export grafu do CSV (Source, Target, Weight)</li>
           </ul>
         </div>
       </div>
@@ -379,61 +393,46 @@
         <div class="tl-dot done"></div>
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-title">Etapa 5 – Viacjazyčná analýza a porovnanie</span>
+            <span class="tl-title">Etapa 6 – Analýza literárnych textov</span>
+            <span class="badge b-done">✓ Dokončená</span>
+            <span class="tl-date">Mar 2026</span>
+          </div>
+          <ul class="tl-tasks">
+            <li>Analýza viacerých diel: Moby Dick, Pride and Prejudice, Zločin a trest a ďalšie</li>
+            <li>Overenie hlavného výsledku Kulig et al.: parameter c nižší pri zahrnutí interpunkcie</li>
+            <li>Porovnanie žánrov a autorov</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot done"></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <span class="tl-title">Etapa 7 – Viacjazyčné porovnanie</span>
             <span class="badge b-done">✓ Dokončená</span>
             <span class="tl-date">Mar – Apr 2026</span>
           </div>
           <ul class="tl-tasks">
-            <li>Analýza literárnych diel v EN, DE, FR</li>
-            <li>Paralelné porovnanie Alice in Wonderland (EN / DE / FR)</li>
+            <li>Paralelné porovnanie Alice in Wonderland v EN / DE / FR</li>
+            <li>Analýza vplyvu jazykovej morfológie na štruktúru siete</li>
             <li>Porovnanie so syntetickými modelmi sietí (BA, WS, PowerlawCluster)</li>
-            <li>Prezentácia výsledkov – Projektový seminár 1 (Máj 2026)</li>
           </ul>
         </div>
       </div>
 
       <div class="tl-item">
-        <div class="tl-dot active"></div>
+        <div class="tl-dot done"></div>
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-title">Etapa 6 – Rastové krivky a robustnosť siete</span>
-            <span class="badge b-active">⏳ Prebieha</span>
-            <span class="tl-date">Máj – Jún 2026</span>
+            <span class="tl-title">Etapa 8 – Prezentácia výsledkov</span>
+            <span class="badge b-done">✓ Dokončená</span>
+            <span class="tl-date">Máj 2026</span>
           </div>
           <ul class="tl-tasks">
-            <li>Rastové krivky: ASPL a C vs. veľkosť textu</li>
-            <li>Experiment odstránenia uzlov – robustnosť siete</li>
-            <li>Rozšírenie na IT a PL texty</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot planned"></div>
-        <div class="tl-card">
-          <div class="tl-head">
-            <span class="tl-title">Etapa 7 – Lemmatizácia a ďalšie jazyky</span>
-            <span class="badge b-planned">Plánovaná</span>
-            <span class="tl-date">Júl – Aug 2026</span>
-          </div>
-          <ul class="tl-tasks">
-            <li>Lemmatizácia pre SK a PL (morfologicky bohaté jazyky)</li>
-            <li>Porovnanie sietí pred a po lemmatizácii</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot planned"></div>
-        <div class="tl-card">
-          <div class="tl-head">
-            <span class="tl-title">Etapa 8 – Záverečná práca</span>
-            <span class="badge b-planned">Plánovaná</span>
-            <span class="tl-date">Sep – Dec 2026</span>
-          </div>
-          <ul class="tl-tasks">
-            <li>Dynamické modely rastu sietí</li>
-            <li>Písanie a finalizácia diplomovej práce</li>
+            <li>Príprava prezentácie pre Projektový seminár 1</li>
+            <li>Zhrnutie dosiahnutých výsledkov a potvrdených hypotéz</li>
+            <li>Vytvorenie webovej stránky projektu</li>
           </ul>
         </div>
       </div>
