@@ -1,10 +1,8 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
+  "outputDirectory": ".",
   "headers": [
     {
-      "source": "/prezentacia_seminar1.pdf",
+      "source": "/public/prezentacia_seminar1.pdf",
       "headers": [
         { "key": "Content-Type", "value": "application/pdf" },
         { "key": "Content-Disposition", "value": "inline" }
